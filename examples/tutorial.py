@@ -6,8 +6,8 @@ Copyright (c) 2019 lileilei. <hustlei@sina.cn>
 
 import sys
 
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+from PyQt6.QtGui import QColor
+from PyQt6.QtWidgets import QApplication, QWidget, QHBoxLayout
 
 sys.path.append("..")
 from CodeEditor import Editor
@@ -25,9 +25,9 @@ edt.setText(text)
 edt.setLanguage("Text")
 edt.setColor(QColor("#FF0000"))
 edt.setFontSize(20)
-from PyQt5.Qsci import QsciScintilla
+from PyQt6.Qsci import QsciScintilla
 
-edt.setEdgeMode(QsciScintilla.EdgeLine)
+edt.setEdgeMode(QsciScintilla.EdgeMode.EdgeLine)
 
 ### another way to config editor ###
 # edt.settings.configure(color="#0000FF", fontSize=20, edgeMode="EdgeLine")
@@ -39,4 +39,4 @@ color = edt.getConfig("Color")  # QColor("#FF0000")
 colorfortoml = edt.settings.get("Color")  # "#FF0000"
 
 edt.show()
-sys.exit(app.exec_())
+sys.exit(app.exec())

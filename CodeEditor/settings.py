@@ -7,11 +7,11 @@ Copyright (c) 2019 lileilei <hustlei@sina.cn>
 """
 
 import os
-from PyQt5.QtCore import Qt, QVariant, QCoreApplication, QSize, pyqtSignal
-from PyQt5.QtGui import QColor, QPalette, QFont
-from PyQt5.QtWidgets import (QWidget, QGroupBox, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QSpinBox, QCheckBox,
+from PyQt6.QtCore import Qt, QVariant, QCoreApplication, QSize, pyqtSignal
+from PyQt6.QtGui import QColor, QPalette, QFont
+from PyQt6.QtWidgets import (QWidget, QGroupBox, QVBoxLayout, QPushButton, QLabel, QHBoxLayout, QSpinBox, QCheckBox,
                              QComboBox, QColorDialog, QFontComboBox, QScrollArea)
-from PyQt5.Qsci import QsciScintilla
+from PyQt6.Qsci import QsciScintilla
 from .setting_enums import EnumError, SettingEnums
 
 
@@ -426,9 +426,9 @@ class EditorSettings():
         checkbox = QCheckBox()
 
         def checkbox_changed(state):
-            if state == Qt.Checked:
+            if state == Qt.CheckState.Checked:
                 self._changedSettings[name] = True
-            elif state == Qt.Unchecked:
+            elif state == Qt.CheckState.Unchecked:
                 self._changedSettings[name] = False
 
         checkbox.stateChanged[int].connect(checkbox_changed)
@@ -498,7 +498,7 @@ class EditorSettings():
         combo = QFontComboBox()
         combo.setMinimumWidth(100)
         combo.setMaximumWidth(150)
-        combo.setFontFilters(QFontComboBox.AllFonts)  # 设置过滤器
+        combo.setFontFilters(QFontComboBox.FontFilter.AllFonts)  # 设置过滤器
 
         # Ugly event handler!
         def combo_changed(index):
@@ -523,7 +523,7 @@ class EditorSettings():
         # Event handler
         def button_pressed():
             color = QColorDialog.getColor(self._currentSettings.get(
-                name, Qt.white))  # button.palette().color(QPalette.Background))
+                name, Qt.GlobalColor.white))  # button.palette().color(QPalette.Background))
             if color.isValid():
                 button.setStyleSheet("background-color: %s" % color.name())
                 self._changedSettings[name] = color

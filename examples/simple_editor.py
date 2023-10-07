@@ -7,7 +7,7 @@ Copyright (c) 2019 lileilei. <hustlei@sina.cn>
 import sys
 
 sys.path.append("..")
-from PyQt5.QtWidgets import QApplication, QWidget, QSplitter, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog
+from PyQt6.QtWidgets import QApplication, QWidget, QSplitter, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog
 from CodeEditor import Editor
 
 app = QApplication(sys.argv)
@@ -71,4 +71,4 @@ win.setLayout(mainLayout)
 
 win.setMinimumWidth(800)
 win.show()
-sys.exit(app.exec_())
+sys.exit(app.exec())

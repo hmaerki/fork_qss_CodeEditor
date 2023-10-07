@@ -1,7 +1,7 @@
 """Wrapper for Qsci.QsciScintilla enumerations.
 """
-from PyQt5.Qsci import QsciScintilla
-from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt6.Qsci import QsciScintilla
+from PyQt6.QtCore import QCoreApplication, Qt
 from CodeEditor.lang import language_extensions
 
 
@@ -15,34 +15,34 @@ class SettingEnums:
     enums = {
         # annotation display styles
         QsciScintilla.AnnotationDisplay: {
-            QsciScintilla.AnnotationHidden: {
+            QsciScintilla.AnnotationDisplay.AnnotationHidden: {
                 'name': 'AnnotationHidden',
                 'display': QCoreApplication.translate('SettingEnums', "Hidden")
             },
-            QsciScintilla.AnnotationStandard: {
+            QsciScintilla.AnnotationDisplay.AnnotationStandard: {
                 'name': 'AnnotationStandard',
                 'display': QCoreApplication.translate('SettingEnums', "Standard")
             },
-            QsciScintilla.AnnotationBoxed: {
+            QsciScintilla.AnnotationDisplay.AnnotationBoxed: {
                 'name': 'AnnotationBoxed',
                 'display': QCoreApplication.translate('SettingEnums', "Boxed")
             },
         },
         # sources for auto-completion lists.
         QsciScintilla.AutoCompletionSource: {
-            QsciScintilla.AcsNone: {
+            QsciScintilla.AutoCompletionSource.AcsNone: {
                 'name': 'AcsNone',
                 'display': QCoreApplication.translate('SettingEnums', "None")
             },
-            QsciScintilla.AcsAll: {
+            QsciScintilla.AutoCompletionSource.AcsAll: {
                 'name': 'AcsAll',
                 'display': QCoreApplication.translate('SettingEnums', "All")
             },
-            QsciScintilla.AcsDocument: {
+            QsciScintilla.AutoCompletionSource.AcsDocument: {
                 'name': 'AcsDocument',
                 'display': QCoreApplication.translate('SettingEnums', "Document")
             },
-            QsciScintilla.AcsAPIs: {
+            QsciScintilla.AutoCompletionSource.AcsAPIs: {
                 'name': 'AcsAPIs',
                 'display': QCoreApplication.translate('SettingEnums', "APIs")
             },
@@ -51,233 +51,233 @@ class SettingEnums:
         # braces. The Python lexers will also match a : with the end of the
         # corresponding indented block.
         QsciScintilla.BraceMatch: {
-            QsciScintilla.NoBraceMatch: {
+            QsciScintilla.BraceMatch.NoBraceMatch: {
                 'name': 'NoBraceMatch',
                 'display': QCoreApplication.translate('SettingEnums', "No")
             },
-            QsciScintilla.StrictBraceMatch: {
+            QsciScintilla.BraceMatch.StrictBraceMatch: {
                 'name': 'StrictBraceMatch',
                 'display': QCoreApplication.translate('SettingEnums', "Strict")
             },
-            QsciScintilla.SloppyBraceMatch: {
+            QsciScintilla.BraceMatch.SloppyBraceMatch: {
                 'name': 'SloppyBraceMatch',
                 'display': QCoreApplication.translate('SettingEnums', "Sloppy")
             },
         },
         # call tip styles
         QsciScintilla.CallTipsStyle: {
-            QsciScintilla.CallTipsNone: {
+            QsciScintilla.CallTipsStyle.CallTipsNone: {
                 'name': 'CallTipsNone',
                 'display': QCoreApplication.translate('SettingEnums', "None")
             },
-            QsciScintilla.CallTipsNoContext: {
+            QsciScintilla.CallTipsStyle.CallTipsNoContext: {
                 'name': 'CallTipsNoContext',
                 'display': QCoreApplication.translate('SettingEnums', "NoContext")
             },
-            QsciScintilla.CallTipsNoAutoCompletionContext: {
+            QsciScintilla.CallTipsStyle.CallTipsNoAutoCompletionContext: {
                 'name': 'CallTipsNoAutoCompletionContext',
                 'display': QCoreApplication.translate('SettingEnums', "NoAutoCompletionContext")
             },
-            QsciScintilla.CallTipsContext: {
+            QsciScintilla.CallTipsStyle.CallTipsContext: {
                 'name': 'CallTipsContext',
                 'display': QCoreApplication.translate('SettingEnums', "Context")
             },
         },
         # edge modes for long lines
         QsciScintilla.EdgeMode: {
-            QsciScintilla.EdgeNone: {
+            QsciScintilla.EdgeMode.EdgeNone: {
                 'name': 'EdgeNone',
                 'display': 'None'
             },
-            QsciScintilla.EdgeLine: {
+            QsciScintilla.EdgeMode.EdgeLine: {
                 'name': 'EdgeLine',
                 'display': 'Line'
             },
-            QsciScintilla.EdgeBackground: {
+            QsciScintilla.EdgeMode.EdgeBackground: {
                 'name': 'EdgeBackground',
                 'display': 'Background'
             }
         },
         # end-of-line modes
         QsciScintilla.EolMode: {
-            QsciScintilla.EolWindows: {
+            QsciScintilla.EolMode.EolWindows: {
                 'name': 'EolWindows',
                 'display': 'Windows'
             },
-            QsciScintilla.EolUnix: {
+            QsciScintilla.EolMode.EolUnix: {
                 'name': 'Unix',
                 'display': 'Unix'
             },
-            QsciScintilla.EolMac: {
+            QsciScintilla.EolMode.EolMac: {
                 'name': 'EolMac',
                 'display': 'Mac'
             }
         },
         # styles for the folding margin
         QsciScintilla.FoldStyle: {
-            QsciScintilla.NoFoldStyle: {
+            QsciScintilla.FoldStyle.NoFoldStyle: {
                 'name': 'NoFoldStyle',
                 'display': 'No'
             },
-            QsciScintilla.PlainFoldStyle: {
+            QsciScintilla.FoldStyle.PlainFoldStyle: {
                 'name': 'PlainFoldStyle',
                 'display': 'Plain'
             },
-            QsciScintilla.CircledFoldStyle: {
+            QsciScintilla.FoldStyle.CircledFoldStyle: {
                 'name': 'CircledFoldStyle',
                 'display': 'Circled'
             },
-            QsciScintilla.BoxedFoldStyle: {
+            QsciScintilla.FoldStyle.BoxedFoldStyle: {
                 'name': 'BoxedFoldStyle',
                 'display': 'Boxed'
             },
-            QsciScintilla.CircledTreeFoldStyle: {
+            QsciScintilla.FoldStyle.CircledTreeFoldStyle: {
                 'name': 'CircledTreeFoldStyle',
                 'display': 'CircledTree'
             },
-            QsciScintilla.BoxedTreeFoldStyle: {
+            QsciScintilla.FoldStyle.BoxedTreeFoldStyle: {
                 'name': 'BoxedTreeFoldStyle',
                 'display': 'BoxedTree'
             }
         },
         # margin types
         QsciScintilla.MarginType: {
-            QsciScintilla.SymbolMargin: {
+            QsciScintilla.MarginType.SymbolMargin: {
                 'name': 'NoFoldStyle',
                 'display': 'NoFoldStyle'
             },
-            QsciScintilla.SymbolMarginDefaultForegroundColor: {
+            QsciScintilla.MarginType.SymbolMarginDefaultForegroundColor: {
                 'name': 'PlainFoldStyle',
                 'display': 'PlainFoldStyle'
             },
-            QsciScintilla.SymbolMarginDefaultBackgroundColor: {
+            QsciScintilla.MarginType.SymbolMarginDefaultBackgroundColor: {
                 'name': 'CircledFoldStyle',
                 'display': 'CircledFoldStyle'
             },
-            QsciScintilla.NumberMargin: {
+            QsciScintilla.MarginType.NumberMargin: {
                 'name': 'BoxedFoldStyle',
                 'display': 'BoxedFoldStyle'
             },
-            QsciScintilla.TextMargin: {
+            QsciScintilla.MarginType.TextMargin: {
                 'name': 'CircledTreeFoldStyle',
                 'display': 'CircledTreeFoldStyle'
             },
-            QsciScintilla.TextMarginRightJustified: {
+            QsciScintilla.MarginType.TextMarginRightJustified: {
                 'name': 'BoxedTreeFoldStyle',
                 'display': 'BoxedTreeFoldStyle'
             }
         },
         # pre-defined marker symbols   #25 28 tobe added
         QsciScintilla.MarkerSymbol: {
-            QsciScintilla.Circle: {
+            QsciScintilla.MarkerSymbol.Circle: {
                 'name': 'Circle',
                 'display': 'Circle'
             },
-            QsciScintilla.Rectangle: {
+            QsciScintilla.MarkerSymbol.Rectangle: {
                 'name': 'Rectangle',
                 'display': 'Rectangle'
             },
-            QsciScintilla.RightTriangle: {
+            QsciScintilla.MarkerSymbol.RightTriangle: {
                 'name': 'RightTriangle',
                 'display': 'RightTriangle'
             },
-            QsciScintilla.SmallRectangle: {
+            QsciScintilla.MarkerSymbol.SmallRectangle: {
                 'name': 'SmallRectangle',
                 'display': 'SmallRectangle'
             },
-            QsciScintilla.RightArrow: {
+            QsciScintilla.MarkerSymbol.RightArrow: {
                 'name': 'RightArrow',
                 'display': 'RightArrow'
             },
-            QsciScintilla.Invisible: {
+            QsciScintilla.MarkerSymbol.Invisible: {
                 'name': 'Invisible',
                 'display': 'Invisible'
             },
-            QsciScintilla.DownTriangle: {
+            QsciScintilla.MarkerSymbol.DownTriangle: {
                 'name': 'DownTriangle',
                 'display': 'DownTriangle'
             },
-            QsciScintilla.Minus: {
+            QsciScintilla.MarkerSymbol.Minus: {
                 'name': 'Minus',
                 'display': 'Minus'
             },
-            QsciScintilla.Plus: {
+            QsciScintilla.MarkerSymbol.Plus: {
                 'name': 'Plus',
                 'display': 'Plus'
             },
-            QsciScintilla.VerticalLine: {
+            QsciScintilla.MarkerSymbol.VerticalLine: {
                 'name': 'VerticalLine',
                 'display': 'VerticalLine'
             },
-            QsciScintilla.BottomLeftCorner: {
+            QsciScintilla.MarkerSymbol.BottomLeftCorner: {
                 'name': 'BottomLeftCorner',
                 'display': 'BottomLeftCorner'
             },
-            QsciScintilla.LeftSideSplitter: {
+            QsciScintilla.MarkerSymbol.LeftSideSplitter: {
                 'name': 'LeftSideSplitter',
                 'display': 'LeftSideSplitter'
             },
-            QsciScintilla.BoxedPlus: {
+            QsciScintilla.MarkerSymbol.BoxedPlus: {
                 'name': 'BoxedPlus',
                 'display': 'BoxedPlus'
             },
-            QsciScintilla.BoxedPlusConnected: {
+            QsciScintilla.MarkerSymbol.BoxedPlusConnected: {
                 'name': 'BoxedPlusConnected',
                 'display': 'BoxedPlusConnected'
             },
-            QsciScintilla.BoxedMinus: {
+            QsciScintilla.MarkerSymbol.BoxedMinus: {
                 'name': 'BoxedMinus',
                 'display': 'BoxedMinus'
             },
-            QsciScintilla.BoxedMinusConnected: {
+            QsciScintilla.MarkerSymbol.BoxedMinusConnected: {
                 'name': 'BoxedMinusConnected',
                 'display': 'BoxedMinusConnected'
             },
-            QsciScintilla.RoundedBottomLeftCorner: {
+            QsciScintilla.MarkerSymbol.RoundedBottomLeftCorner: {
                 'name': 'RoundedBottomLeftCorner',
                 'display': 'RoundedBottomLeftCorner'
             },
-            QsciScintilla.LeftSideRoundedSplitter: {
+            QsciScintilla.MarkerSymbol.LeftSideRoundedSplitter: {
                 'name': 'LeftSideRoundedSplitter',
                 'display': 'LeftSideRoundedSplitter'
             },
-            QsciScintilla.CircledPlus: {
+            QsciScintilla.MarkerSymbol.CircledPlus: {
                 'name': 'CircledPlus',
                 'display': 'CircledPlus'
             },
-            QsciScintilla.CircledPlusConnected: {
+            QsciScintilla.MarkerSymbol.CircledPlusConnected: {
                 'name': 'CircledPlusConnected',
                 'display': 'CircledPlusConnected'
             },
-            QsciScintilla.CircledMinus: {
+            QsciScintilla.MarkerSymbol.CircledMinus: {
                 'name': 'CircledMinus',
                 'display': 'CircledMinus'
             },
-            QsciScintilla.CircledMinusConnected: {
+            QsciScintilla.MarkerSymbol.CircledMinusConnected: {
                 'name': 'CircledMinusConnected',
                 'display': 'CircledMinusConnected'
             },
-            QsciScintilla.Background: {
+            QsciScintilla.MarkerSymbol.Background: {
                 'name': 'Background',
                 'display': 'Background'
             },
-            QsciScintilla.ThreeDots: {
+            QsciScintilla.MarkerSymbol.ThreeDots: {
                 'name': 'ThreeDots',
                 'display': 'ThreeDots'
             },
-            QsciScintilla.ThreeRightArrows: {
+            QsciScintilla.MarkerSymbol.ThreeRightArrows: {
                 'name': 'ThreeRightArrows',
                 'display': 'ThreeRightArrows'
             },
-            QsciScintilla.FullRectangle: {
+            QsciScintilla.MarkerSymbol.FullRectangle: {
                 'name': 'FullRectangle',
                 'display': 'FullRectangle'
             },
-            QsciScintilla.LeftRectangle: {
+            QsciScintilla.MarkerSymbol.LeftRectangle: {
                 'name': 'LeftRectangle',
                 'display': 'LeftRectangle'
             },
-            QsciScintilla.Underline: {
+            QsciScintilla.MarkerSymbol.Underline: {
                 'name': 'Underline',
                 'display': 'Underline'
             }
@@ -286,45 +286,45 @@ class SettingEnums:
         # displayed as small centred dots and tabs are displayed as light arrows
         # pointing to the right.
         QsciScintilla.WhitespaceVisibility: {
-            QsciScintilla.WsInvisible: {
+            QsciScintilla.WhitespaceVisibility.WsInvisible: {
                 'name': 'WsInvisible',
                 'display': 'Invisible'
             },
-            QsciScintilla.WsVisible: {
+            QsciScintilla.WhitespaceVisibility.WsVisible: {
                 'name': 'WsVisible',
                 'display': 'Visible'
             },
-            QsciScintilla.WsVisibleAfterIndent: {
+            QsciScintilla.WhitespaceVisibility.WsVisibleAfterIndent: {
                 'name': 'WsVisibleAfterIndent',
                 'display': 'VisibleAfterIndent'
             }
         },
         # line wrap modes
         QsciScintilla.WrapMode: {
-            QsciScintilla.WrapNone: {
+            QsciScintilla.WrapMode.WrapNone: {
                 'name': 'WrapNone',
                 'display': 'None'
             },
-            QsciScintilla.WrapWord: {
+            QsciScintilla.WrapMode.WrapWord: {
                 'name': 'WrapWord',
                 'display': 'Word'
             },
-            QsciScintilla.WrapCharacter: {
+            QsciScintilla.WrapMode.WrapCharacter: {
                 'name': 'WrapCharacter',
                 'display': 'Character'
             }
         },
         # line wrap visual flags
         QsciScintilla.WrapVisualFlag: {
-            QsciScintilla.WrapFlagNone: {
+            QsciScintilla.WrapVisualFlag.WrapFlagNone: {
                 'name': 'WrapFlagNone',
                 'display': 'None'
             },
-            QsciScintilla.WrapFlagByText: {
+            QsciScintilla.WrapVisualFlag.WrapFlagByText: {
                 'name': 'WrapFlagByText',
                 'display': 'ByText'
             },
-            QsciScintilla.WrapFlagByBorder: {
+            QsciScintilla.WrapVisualFlag.WrapFlagByBorder: {
                 'name': 'WrapFlagByBorder',
                 'display': 'ByBorder'
             }

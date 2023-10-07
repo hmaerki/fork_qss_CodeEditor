@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Copyright (c) 2019 lileilei <hustlei@sina.cn>
 """
-from PyQt5.Qsci import QsciScintilla
-from PyQt5.QtWidgets import (QMainWindow, QWidget, QHBoxLayout, QGridLayout, QVBoxLayout, QCheckBox, QPushButton,
+from PyQt6.Qsci import QsciScintilla
+from PyQt6.QtWidgets import (QMainWindow, QWidget, QHBoxLayout, QGridLayout, QVBoxLayout, QCheckBox, QPushButton,
                              QLabel, QLineEdit, QSpacerItem, QSizePolicy)
-from PyQt5.QtCore import Qt, QMargins
+from PyQt6.QtCore import Qt, QMargins
 
 
 class SearchDialog(QMainWindow):
@@ -12,7 +12,7 @@ class SearchDialog(QMainWindow):
         super().__init__(editor)
         self.__editor = editor
         self.isReplaceMode = replaceMode
-        self.setWindowFlags(Qt.Tool)
+        self.setWindowFlags(Qt.WindowType.Tool)
         self.setMinimumWidth(320)
         self.setMinimumHeight(200)
         self.statusbar = self.statusBar()
@@ -85,7 +85,7 @@ class SearchDialog(QMainWindow):
         self.setCentralWidget(mainwidget)
         mainwidget.setFixedHeight(200)
 
-        # from PyQt5.QtCore import QTextCodec
+        # from PyQt6.QtCore import QTextCodec
         # QTextCodec.setCodecForTr(QTextCodec.codecForName("UTF-8"))无效
         self.__reverseCheckbox = QCheckBox(self.tr("reverse"))  # ,"反向查找"))
         caseSensitiveCheckbox = QCheckBox(self.tr("case sensitive"))  # ,"匹配大小写"))
@@ -99,8 +99,8 @@ class SearchDialog(QMainWindow):
         self.__searchTextBox = QLineEdit()
         self.__replaceTextBox = QLineEdit()
         # self.__searchTextBox.setMinimumWidth(120)
-        leftGridLayout.addWidget(findlabel, 0, 0, 1, 1, Qt.AlignRight)
-        leftGridLayout.addWidget(self.__replacelabel, 1, 0, 1, 1, Qt.AlignRight)
+        leftGridLayout.addWidget(findlabel, 0, 0, 1, 1, Qt.AlignmentFlag.AlignRight)
+        leftGridLayout.addWidget(self.__replacelabel, 1, 0, 1, 1, Qt.AlignmentFlag.AlignRight)
         leftGridLayout.addWidget(self.__searchTextBox, 0, 1)
         leftGridLayout.addWidget(self.__replaceTextBox, 1, 1)
         leftGridLayout.addItem(QSpacerItem(20, 5), 2, 0)
@@ -124,9 +124,9 @@ class SearchDialog(QMainWindow):
         regCheckbox.stateChanged.connect(self.setRe)
 
         findNextBtn = QPushButton(self.tr("Find Next"))  # ,"查找下一个"))
-        findNextBtn.setShortcut(Qt.Key_Return)
+        findNextBtn.setShortcut(Qt.Key.Key_Return)
         self.__findPreBtn = QPushButton(self.tr("Find previous"))  # ,"查找上一个"))
-        self.__findPreBtn.setSizePolicy(QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding))
+        self.__findPreBtn.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding))
         self.__findPreBtn.resize(self.__findPreBtn.sizeHint())
         self.__countBtn = QPushButton(self.tr("Count"))  # ,"计数"))
         cancelBtn = QPushButton(self.tr("Cancel"))  # ,"取消"))
@@ -159,7 +159,7 @@ class SearchDialog(QMainWindow):
             self.tr("Count:{} times matched.").format(self.__editor.count(self.searchText, case=self.__caseFlag)))))
 
         cancelBtn.clicked.connect(self.close)
-        cancelBtn.setShortcut(Qt.Key_Escape)
+        cancelBtn.setShortcut(Qt.Key.Key_Escape)
 
     def showEvent(self, e):
         self.__searchTextBox.setText(self.searchText)
@@ -206,7 +206,7 @@ class SearchDialog(QMainWindow):
 
 
 if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication
+    from PyQt6.QtWidgets import QApplication
     import sys
 
     app = QApplication(sys.argv)

@@ -5,10 +5,10 @@ Copyright (c) 2019 lileilei <hustlei@sina.cn>
 """
 
 import sys
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtGui import (QFont, QFontMetrics, QKeyEvent, QColor, QDropEvent)
-from PyQt5 import Qsci
-from PyQt5.Qsci import QsciScintilla, QsciLexer
+from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtGui import (QFont, QFontMetrics, QKeyEvent, QColor, QDropEvent)
+from PyQt6 import Qsci
+from PyQt6.Qsci import QsciScintilla, QsciLexer
 from CodeEditor import lexers
 from CodeEditor.search import SearchDialog
 from CodeEditor.settings import EditorSettings
@@ -47,7 +47,7 @@ class Editor(QsciScintilla):
         self.searchDialog = SearchDialog(self)
         self.settings = EditorSettings(self)
 
-        self.__foldingStyle = self.BoxedFoldStyle
+        self.__foldingStyle = self.FoldStyle.BoxedFoldStyle
 
     ###
     # extension(core): config extension
@@ -96,7 +96,7 @@ class Editor(QsciScintilla):
         if 'marginLineNumbers' in config:
             if config['marginLineNumbers'] == (0, True):
                 font_metrics = QFontMetrics(config.get('marginsFont', font))  # self.marginsFont())
-                self.setMarginWidth(0, font_metrics.width('000') + 5)
+                self.setMarginWidth(0, font_metrics.averageCharWidth()*3 + 5)
             else:
                 self.setMarginWidth(0, 0)
 
@@ -110,17 +110,17 @@ class Editor(QsciScintilla):
             font=font,
 
             # Wrap mode: Wrap(None|Word|Character|Whitespace) 0,1,2,3
-            wrapMode=self.WrapNone,  # self.setWrapMode(self.WrapWord)    # 自动换行
+            wrapMode=self.WrapMode.WrapNone,  # self.setWrapMode(self.WrapWord)    # 自动换行
             # Text wrapping visual flag:
             # WrapFlag(None|ByText|ByBorder|InMargin)
-            wrapVisualFlags=self.WrapFlagNone,  # 无对应getter
+            wrapVisualFlags=self.WrapVisualFlag.WrapFlagNone,  # 无对应getter
             # End-of-line mode
             # EolMode: Eol(Windows|Unix|Mac) SC_EOL_CRLF|SC_EOL_LF|SC_EOL_CR
             # eolMode='EolWindows',  # self.SC_EOL_LF,# 以\n换行
             eolVisibility=False,  # 是否显示换行符
 
             # Whitespace: Ws(Invisible|Visible|VisibleAfterIndent)
-            whitespaceVisibility=self.WsInvisible,  # 是否显示空格，类似word空格处显示为点
+            whitespaceVisibility=self.WhitespaceVisibility.WsInvisible,  # 是否显示空格，类似word空格处显示为点
             #  WhitespaceSize: (0|1|2) 点大小，0不显示，1小点，2大点
             whitespaceSize=2,
 
@@ -147,16 +147,16 @@ class Editor(QsciScintilla):
             # edges
             edgeColumn=80,
             # Edge mode: Edge(None|Line|Background)
-            edgeMode=self.EdgeLine,
+            edgeMode=self.EdgeMode.EdgeLine,
             edgeColor=QColor('#FF88FFFF'),
 
             # Brace matching: (No|Strict|Sloppy)BraceMatch
-            braceMatching=self.SloppyBraceMatch,
+            braceMatching=self.BraceMatch.SloppyBraceMatch,
 
             # AutoComplete
             # Acs[None|All|Document|APIs]禁用自动补全提示功能|所有可用的资源|
             # 当前文档中出现的名称都自动补全提示|使用QsciAPIs类加入的名称都自动补全提示
-            autoCompletionSource=self.AcsAll,  # 自动补全。对于所有Ascii字符
+            autoCompletionSource=self.AutoCompletionSource.AcsAll,  # 自动补全。对于所有Ascii字符
             autoCompletionCaseSensitivity=False,  # 自动补全大小写敏感,不是很有用
             autoCompletionThreshold=1,  # 输入多少个字符才弹出补全提示
             autoCompletionReplaceWord=True,  # 是否用补全的字符串替代光标右边的字符串
@@ -172,7 +172,7 @@ class Editor(QsciScintilla):
 
             # margin (folding)
             # Folding: (No|Plain|Circled|Boxed|CircledTree|BoxedTree)FoldStyle
-            folding=self.BoxedTreeFoldStyle,  # 代码可折叠
+            folding=self.FoldStyle.BoxedTreeFoldStyle,  # 代码可折叠
             foldMarginColors=(QColor('#aad'), QColor('#bbe')),
             # marginType=(2,QsciScintilla.SC_MARGIN_SYMBOL),#页边类型
             # marginMarkerMask=(2,QsciScintilla.SC_MASK_FOLDERS),#页边掩码
@@ -219,8 +219,8 @@ class Editor(QsciScintilla):
             self.lexer.setPaper(self.paper(), 0)
             if language == "Text":
                 self.__foldingStyle = self.folding()
-                self.setFolding(self.NoFoldStyle)
-            elif self.folding() == self.NoFoldStyle:
+                self.setFolding(self.FoldStyle.NoFoldStyle)
+            elif self.folding() == self.FoldStyle.NoFoldStyle:
                 self.setFolding(self.__foldingStyle)
 
         print("Editor syntax highlighting language: %s" % language)

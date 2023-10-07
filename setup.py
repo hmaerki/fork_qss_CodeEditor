@@ -27,5 +27,5 @@ setup(
 
     version=ver,
     packages=["CodeEditor", "CodeEditor.lexers"],
-    install_requires=['chardet', 'Qscintilla'],
+    install_requires=['chardet', 'PyQt6-QScintilla'],
 )
